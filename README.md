@@ -1,9 +1,9 @@
 # API MeeeAI - MeeeCloud
 
-> **Servidor API:** `http://87.106.100.210:6169/`
-> **Pagina Web:** `http://87.106.52.7:6246/`
-> **Discord:** `https://discord.gg/YVCtPQXSsS`
-> **Última actualización:** 17 de junio de 2025
+> - **Servidor API:** `http://87.106.100.210:6169/`
+> - **Pagina Web:** `http://87.106.52.7:6246/`
+> - **Discord:** `https://discord.gg/YVCtPQXSsS`
+> - **Última actualización:** 17 de junio de 2025
 
 ---
 
@@ -58,6 +58,7 @@ Genera imágenes según descripción y modelo seleccionado.
 | `/e1`  | ⭐ Mejor calidad de imagen.  |
 | `/e2`  | 🚀 Rápido, menor calidad.    |
 | `/ef3`  | 🎨 Calidad superior, lento (Premium).    |
+| `/ef4`  | 🎯 Muy preciso y rapido (Proximamente...).    |
 
 #### Opciones adicionales:
 - `/b` — Mejora la calidad de la imagen.
