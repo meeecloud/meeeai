@@ -162,6 +162,28 @@ Devuelve información del estado actual del cliente y límites de uso.
 
 ---
 
+## ⏳ Colas de la API
+
+| Opción    | Activado (`true`)                          | Desactivado (`false`)                     |
+|-----------|--------------------------------------------|--------------------------------------------|
+| **nofree**  | ✅ Usa cola privada (no comparte con usuarios gratuitos)  | ❌ Usa cola global (espera con todos)       |
+| **mejora**  | ✅ Ignora el cooldown (envía solicitudes sin espera)      | ❌ Respeta el cooldown (`cooldown_seconds`) |
+| **clouding**| 🚀 Ignora TODAS las colas (máxima prioridad)             | ⏳ Sigue las reglas de `nofree`             |
+
+### Explicación rápida:
+- **`nofree`**: Para usuarios premium (evita colas compartidas).  
+- **`mejora`**: Para alta velocidad (elimina esperas entre solicitudes).  
+- **`clouding`**: Máximo privilegio (sin colas, sin límites).  
+
+### Combinaciones útiles:
+1. `clouding: true` → **VIP absoluto** (nada de esperas).  
+2. `nofree: true` + `mejora: true` → **Premium rápido** (cola privada + sin cooldown).  
+3. `nofree: false` → Usuario gratuito (cola global + cooldown).  
+
+> ℹ️ **Nota:** `clouding` anula todas las demás reglas de colas.
+
+---
+
 ## ⚠️ Reglas y límites de uso
 
 - ⏱️ Enfriamiento: XX segundos entre solicitudes.
