@@ -167,20 +167,43 @@ Devuelve información del estado actual del cliente y límites de uso.
 | Opción    | Activado (`true`)                          | Desactivado (`false`)                     |
 |-----------|--------------------------------------------|--------------------------------------------|
 | **nofree**  | ✅ Usa cola privada (no comparte con usuarios gratuitos)  | ❌ Usa cola global (espera con todos)       |
-| **mejora**  | ✅ Ignora el cooldown (envía solicitudes sin espera)      | ❌ Respeta el cooldown (`cooldown_seconds`) |
-| **clouding**| 🚀 Ignora TODAS las colas (máxima prioridad)             | ⏳ Sigue las reglas de `nofree`             |
+| **clouding**| 🚀 Ignora TODAS las colas (máxima prioridad)             | ⏳ Usa cola global (espera con todos)             |
 
 ### Explicación rápida:
-- **`nofree`**: Para usuarios premium (evita colas compartidas).  
-- **`mejora`**: Para alta velocidad (elimina esperas entre solicitudes).  
+- **`nofree`**: Para usuarios premium (evita colas compartidas).   
 - **`clouding`**: Máximo privilegio (sin colas, sin límites).  
 
 ### Combinaciones útiles:
-1. `clouding: true` → **VIP absoluto** (nada de esperas).  
-2. `nofree: true` + `mejora: true` → **Premium rápido** (cola privada + sin cooldown).  
+1. `clouding: true` → **VIP** (nada de esperas).   
 3. `nofree: false` → Usuario gratuito (cola global + cooldown).  
 
 > ℹ️ **Nota:** `clouding` anula todas las demás reglas de colas.
+
+---
+
+# Niveles de Prioridad de la API: Cloudy 1-4
+
+La API ahora incluye un sistema de niveles de **Cloudy 1-4**, diseñado para adaptar el acceso según la importancia y carga de tu proyecto. Cada nivel define cuántas solicitudes simultáneas puedes realizar antes de que tus peticiones sean encoladas.
+
+## Tabla de Niveles Cloudy
+
+| Nivel     | Descripción                                                                 | Solicitudes Simultáneas Permitidas |
+|-----------|------------------------------------------------------------------------------|------------------------------------|
+| **Cloudy 1** | Tendrás tu propia cola dedicada, pero no puedes ejecutar múltiples solicitudes al mismo tiempo. | 1                                  |
+| **Cloudy 2** | Puedes realizar hasta 2 solicitudes al mismo tiempo.                     | 2                                  |
+| **Cloudy 3** | Puedes realizar hasta 3 solicitudes al mismo tiempo.                     | 3                                  |
+| **Cloudy 4** | Acceso completo: puedes realizar solicitudes ilimitadas simultáneamente. | Ilimitadas                         |
+
+## Importante
+
+- Si tu número de solicitudes simultáneas excede el límite permitido por tu nivel, **las solicitudes adicionales se colocarán en la cola normal compartida**, lo cual puede aumentar el tiempo de respuesta.
+- El objetivo de este sistema es asegurar un acceso justo a los recursos según la carga y criticidad de cada proyecto.
+
+## Ejemplo
+
+Si estás en **Cloudy 2** e intentas hacer 4 solicitudes simultáneas:
+- Las primeras 2 se procesarán de inmediato.
+- Las otras 2 se colocarán en la cola normal y esperarán a que se libere capacidad.
 
 ---
 
