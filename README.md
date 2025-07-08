@@ -189,10 +189,10 @@ La API ahora incluye un sistema de niveles de **Cloudy 1-4**, diseñado para ada
 
 | Nivel     | Descripción                                                                 | Solicitudes Simultáneas Permitidas |
 |-----------|------------------------------------------------------------------------------|------------------------------------|
-| **Cloudy 1** | Tendrás tu propia cola dedicada, pero no puedes ejecutar múltiples solicitudes al mismo tiempo. | 1                                  |
+| **Cloudy 1** | Puedes realizar hasta 1 solicitud al mismo tiempo. Tendras nofree activo  | 1                                  |
 | **Cloudy 2** | Puedes realizar hasta 2 solicitudes al mismo tiempo.                     | 2                                  |
 | **Cloudy 3** | Puedes realizar hasta 3 solicitudes al mismo tiempo.                     | 3                                  |
-| **Cloudy 4** | Acceso completo: puedes realizar solicitudes ilimitadas simultáneamente. | Ilimitadas                         |
+| **Cloudy 4** | Puedes realizar solicitudes ilimitadas simultáneamente. | Ilimitadas                         |
 
 ## Importante
 
