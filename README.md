@@ -86,14 +86,28 @@ http://87.106.100.210:6169/img/ef3/un gato en el bosque/b/res=3/url=url_imagen_1
 
 ---
 
-### 3. Estadísticas de uso — `/stats`
+### 📊 Sistema de Estadísticas
 
-Devuelve información del estado actual del cliente y límites de uso.
+#### Endpoint `/stats`
+- **Qué muestra**:
+  - Límites configurados (diarios, horarios, etc.)
+  - Uso actual (solicitudes recientes)
+  - Modelos disponibles
+  - Estado de la licencia
+- **Autenticación**: Automática (IP o dominio)
 
-#### Formato de uso:
-```
-/stats
-```
+#### Endpoint `/panel/<key>/<password>`
+- **Qué muestra**:
+  - Límites configurados (diarios, horarios, etc.)
+  - Uso actual (solicitudes recientes)
+  - Modelos disponibles
+  - Estado de la licencia
+- **Seguridad**: Requiere key + contraseña válidas
+
+#### 🚪 Acceso a la API
+- Acceso con IP: Se te dara acceso a tu panel con la IP de tu servidor y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /stats
+- Acceso por Dominio: Se te dara acceso a tu panel con el Dominio de tu servidor y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /stats
+- Acceso por Key: Se te dara acceso a tu panel por una Key unica y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /panel/nombre_de_tu_key/contraseña (tanto la key, como la contraseña, se acordara a la hora de comprar el acceso)
 
 #### Ejemplo de respuesta JSON:
 ```json
@@ -155,10 +169,24 @@ Devuelve información del estado actual del cliente y límites de uso.
 
 ---
 
-## 🚪 Acceso a la API
-- Acceso con IP: Se te dara acceso a tu panel con la IP de tu servidor y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /stats
-- Acceso por Dominio: Se te dara acceso a tu panel con el Dominio de tu servidor y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /stats
-- Acceso por Key: Se te dara acceso a tu panel por una Key unica y este contara con los limites acordados. Para consultar tus estadisticas, accederas a la ruta /panel/nombre_de_tu_key/contraseña (tanto la key, como la contraseña, se acordara a la hora de comprar el acceso)
+## 🔐 Mecanismos de Autenticación
+
+### 1. Autenticación por IP
+- **Cómo funciona**: El sistema identifica automáticamente las solicitudes por dirección IP
+- **Uso típico**: Clientes sin key o dominio registrado
+- **Límites**: Aplican restricciones del perfil "default"
+
+### 2. Autenticación por Dominio
+- **Requisitos**: Header `Origin` en la solicitud
+- **Proceso**: 
+  1. Extrae el dominio del header
+  2. Busca coincidencias en la base de datos
+- **Ventaja**: Permite configuraciones personalizadas por dominio
+
+### 3. Autenticación por Key
+- **Formato**: `/ruta/.../key=TU_KEY`
+- **Seguridad**: Combinación con contraseña para el panel
+- **Beneficios**: Puedes utilizar tu key en cualquier aplicacion sin necesidad de contactar con un administrador para que te de acceso
 
 ---
 
