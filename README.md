@@ -34,6 +34,9 @@ Permite generar texto mediante diferentes modelos de lenguaje.
 | `/a5`  | 😏 Modelo mas irónico, directo y veraz.   |
 | `/ab6`  | 🔓 Modelo sin censura (Premium).   |
 
+#### Opciones adicionales:
+- `/s=seed_id` — Sirve para modificar la semilla de texto y evitar resultados repetidos.
+
 #### Ejemplo:
 ```
 http://87.106.100.210:6169/chat/a2/Cuentame una historia
@@ -62,13 +65,16 @@ Genera imágenes según descripción y modelo seleccionado.
 
 #### Opciones adicionales:
 - `/b` — Mejora la calidad de la imagen.
-- `/s=seed_id` — Sirve para modificar la semilla de imagen.
+- `/s=seed_id` — Sirve para modificar la semilla de imagen y evitar resultados repetidos.
 - `/ancho/alto` — Cambia la resolución en píxeles.
 
 #### Opciones adicionales unicas del modelo "ef3":
 - `/res=1,2,3` — Modificar la calidad de imagen, cuanto mas alto el numero, mayor calidad y costo.
 - `/url=url_imagen_1,url_imagen_2` — Puedes poner tanto una unica url de imagen para modificar cambios en ella (/url=url_imagen_1), como mezclar dos imagenes en una, añadiendo dos url en vez de una, separadas por una "," como en el ejemplo.
 - `/sinfondo` — Si añades este parametro, hace una imagen la cual no tiene fondo (background).
+
+#### Opciones adicionales unicas del modelo "ef4":
+- `/url=url_imagen_1` — Puedes poner una unica url de imagen para modificar cambios en ella con alta precisión (/url=url_imagen_1).
 
 #### Ejemplos:
 ```
