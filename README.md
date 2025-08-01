@@ -1,9 +1,9 @@
 # API MeeeAI - MeeeCloud
 
-> - **Servidor API:** `http://87.106.100.210:6169/`
-> - **Pagina Web:** `http://87.106.52.7:6246/`
+> - **Servidor API:** `https://meeeapi.vercel.app/`
+> - **Pagina Web:** `Proximamente...`
 > - **Discord:** `https://discord.gg/YVCtPQXSsS`
-> - **Última actualización:** 17 de junio de 2025
+> - **Última actualización:** 31 de julio de 2025
 
 ---
 
