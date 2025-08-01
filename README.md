@@ -39,9 +39,9 @@ Permite generar texto mediante diferentes modelos de lenguaje.
 
 #### Ejemplo:
 ```
-http://87.106.100.210:6169/chat/a2/Cuentame una historia
-http://87.106.100.210:6169/chat/a3/Que dia es hoy
-http://87.106.100.210:6169/chat/a1/Cuentame un chiste
+https://meeeapi.vercel.app/chat/a2/Cuentame una historia
+https://meeeapi.vercel.app/chat/a3/Que dia es hoy
+https://meeeapi.vercel.app/chat/a1/Cuentame un chiste
 ```
 
 ---
@@ -78,16 +78,16 @@ Genera imágenes según descripción y modelo seleccionado.
 
 #### Ejemplos:
 ```
-http://87.106.100.210:6169/img/e2/un gatito blanco
-http://87.106.100.210:6169/img/e1/un gato espacial/b/1920/1080
-http://87.106.100.210:6169/img/e1/un gato en el bosque/b/s=123456/1920/1080
+https://meeeapi.vercel.app/img/e2/un gatito blanco
+https://meeeapi.vercel.app/img/e1/un gato espacial/b/1920/1080
+https://meeeapi.vercel.app/img/e1/un gato en el bosque/b/s=123456/1920/1080
 ```
 
 #### Ejemplos del modelo "ef3":
 ```
-http://87.106.100.210:6169/img/ef3/un gatito blanco/res=2
-http://87.106.100.210:6169/img/ef3/un gato espacial/b/res=1/sinfondo
-http://87.106.100.210:6169/img/ef3/un gato en el bosque/b/res=3/url=url_imagen_1
+https://meeeapi.vercel.app/img/ef3/un gatito blanco/res=2
+https://meeeapi.vercel.app/img/ef3/un gato espacial/b/res=1/sinfondo
+https://meeeapi.vercel.app/img/ef3/un gato en el bosque/b/res=3/url=url_imagen_1
 ```
 
 ---
@@ -262,7 +262,7 @@ Si estás en **Cloudy 2** e intentas hacer 4 solicitudes simultáneas:
 ## ❓ Dudas
 
 - Si algun modelo tarda mucho en contestar es porque la API puede estar colapsada, esto suele resolverse solo en un tiempo.
-- La web en la que puedes probar la API es http://87.106.52.7:6246/ y el token de acceso aparece en el canal de discord.
+- La web en la que puedes probar la API es "Proximamente..." y el token de acceso aparece en el canal de discord.
 - Puedes acceder a la API tanto por acceso de IP, Dominio o KEY, pidiendo acceso a nuestros moderadores.
 - En caso de que te encuentres con limites en tu cuenta, siempre podras decirselo al equipo MeeeCloud creando un #ticket en discord y nosotros decidiremos aumentarte el limite actual con el que cuentas.
 - El unico modelo de generacion de imagenes que permite NSFW es el "e2".
