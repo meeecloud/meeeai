@@ -3,7 +3,7 @@
 > - **Servidor API:** `https://meeeapi.vercel.app/`
 > - **Pagina Web:** `Próximamente...`
 > - **Discord:** `https://discord.gg/YVCtPQXSsS`
-> - **Última actualización:** 01 de agosto de 2025
+> - **Última actualización:** 1 de agosto de 2025
 
 ---
 
