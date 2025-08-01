@@ -1,9 +1,9 @@
 # API MeeeAI - MeeeCloud
 
 > - **Servidor API:** `https://meeeapi.vercel.app/`
-> - **Pagina Web:** `Proximamente...`
+> - **Pagina Web:** `Próximamente...`
 > - **Discord:** `https://discord.gg/YVCtPQXSsS`
-> - **Última actualización:** 31 de julio de 2025
+> - **Última actualización:** 01 de agosto de 2025
 
 ---
 
@@ -61,7 +61,7 @@ Genera imágenes según descripción y modelo seleccionado.
 | `/e1`  | ⭐ Mejor calidad de imagen.  |
 | `/e2`  | 🚀 Rápido, menor calidad.    |
 | `/ef3`  | 🎨 Calidad superior, lento (Premium).    |
-| `/ef4`  | 🎯 Muy preciso y rapido (Proximamente...).    |
+| `/ef4`  | 🎯 Muy preciso y rapido (Premium).    |
 
 #### Opciones adicionales:
 - `/b` — Mejora la calidad de la imagen.
@@ -87,8 +87,108 @@ https://meeeapi.vercel.app/img/e1/un gato en el bosque/b/s=123456/1920/1080
 ```
 https://meeeapi.vercel.app/img/ef3/un gatito blanco/res=2
 https://meeeapi.vercel.app/img/ef3/un gato espacial/b/res=1/sinfondo
-https://meeeapi.vercel.app/img/ef3/un gato en el bosque/b/res=3/url=url_imagen_1
+https://meeeapi.vercel.app/img/ef3/haz la imagen estilo realista/b/res=3/url=url_imagen_1
 ```
+
+#### Ejemplos del modelo "ef4":
+```
+https://meeeapi.vercel.app/img/ef3/ponle un sombrero/url=url_imagen_1
+https://meeeapi.vercel.app/img/ef3/un gato espacial/b/1920/1080
+https://meeeapi.vercel.app/img/ef3/haz que nieve/b/s=123456/1920/1080/url=url_imagen_1
+```
+
+---
+
+### 3. Ruta de chat por POST — `/meeeapi`
+
+Ahora tu API cuenta con una nueva ruta que permite hacer solicitudes tipo **POST** para interactuar con un modelo de IA. Esta ruta funciona igual que las APIs modernas de chat: mantiene el historial de mensajes y también puede analizar imágenes.
+
+#### Formato de uso:
+```
+POST /meeeapi
+```
+
+**Headers:**
+```http
+X-API-Key: tu_key
+Content-Type: application/json
+```
+
+#### Modelos disponibles:
+| Modelo | Descripción                    |
+|--------|-------------------------------|
+| `a2`  | ⭐ Mejor calidad de texto.       |
+| `a1`  | 🥈 Balance entre calidad y velocidad. |
+| `a4`  | 🥉 Modelo rápido y ligero.        |
+| `a3`  | ⏳ Resultados más actualizados.   |
+| `a5`  | 😏 Modelo mas irónico, directo y veraz.   |
+| `ab6`  | 🔓 Modelo sin censura (Premium).   |
+
+#### Limitaciones:
+- **Limitamos la cantidad de caracteres que puedes enviar en el POST para evitar la saturacion del servidor**
+- **Si superas tu limite te aparecera un error**
+```json
+"limits": {
+        "caracteresMeeeAPI": 1000
+}
+```
+
+#### Ejemplo Normal:
+
+```bash
+curl -X POST "https://meeeapi.vercel.app/meeeapi" \
+     -H "X-API-Key: tu_key" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "m": "a4",
+           "messages": [
+               {"role": "user", "content": "Hola, ¿qué tal?"}
+           ]
+         }'
+```
+
+#### ¿Qué hace?
+- Envía un mensaje al modelo `a4` para que responda como un chat normal, manteniendo contexto si sigues enviando mensajes.
+
+#### Ejemplo análisis de imágenes:
+
+También puedes enviar imágenes para que la IA las describa o analice:
+
+```bash
+curl -X POST \
+  https://meeeapi.vercel.app/meeeapi \
+  -H 'Content-Type: application/json' \
+  -H 'X-API-Key: your_api_key' \
+  -d '{
+    "m": "a4",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "¿Qué ves en esta imagen?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://dominio.com/image.png"
+            }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+#### ¿Qué hace?
+- Envía un mensaje con texto y una imagen al modelo `a4` para que la IA describa lo que ve o responda a preguntas sobre ella.
+
+### Resumen:
+- **`/meeeapi`** permite chatear con la IA, mantener historial de las conversaciones y analizar imágenes.  
+- **`m`**: selecciona el modelo que quieres usar (ej: `a2`, `a4`).  
+- **`messages`**: envía mensajes en formato chat (`role`: user/assistant).  
+- Soporta **texto** e **imágenes** en un mismo mensaje.
 
 ---
 
@@ -215,7 +315,7 @@ https://meeeapi.vercel.app/img/ef3/un gato en el bosque/b/res=3/url=url_imagen_1
 
 ---
 
-# Niveles de Prioridad de la API: Cloudy 1-4
+# Niveles de Prioridad de la API: Cloudy 1-4 (Deshabilitado Actualmente)
 
 La API ahora incluye un sistema de niveles de **Cloudy 1-4**, diseñado para adaptar el acceso según la importancia y carga de tu proyecto. Cada nivel define cuántas solicitudes simultáneas puedes realizar antes de que tus peticiones sean encoladas.
 
@@ -269,5 +369,3 @@ Si estás en **Cloudy 2** e intentas hacer 4 solicitudes simultáneas:
 - Las solicitudes de /chat pueden demorar entre 2-30s dependiendo de la complejidad de la respuesta.
 - Las solicitudes de /img pueden demorar entre 5-15s en los modelos e1 y e2. El modelo ef3 suele durar entre 30-80s dependiendo de la complejidad de la imagen de respuesta.
 - El modelo "ef3" no lee la resolucion como tal poniendo /1920/1080. Si necesitas modificar la resolucion de la imagen, deberas especificarlo en el prompt (Ej: Imagen horizontal de un gato) o (Ej: Imagen 16:9 de un gatito blanco)
-
----
